@@ -5,6 +5,10 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { register, login } from "./controllers/authController.js";
 import { verifyUser, teacherPage } from "./controllers/teacherController.js";
+import {
+  getAllQuestions,
+  addQuestion,
+} from "./controllers/questionController.js";
 import config from "./utils/config.js";
 
 dotenv.config();
@@ -39,3 +43,7 @@ mongoose
 app.get("/teacherpage", verifyUser, teacherPage);
 app.post("/register", register);
 app.post("/login", login);
+
+// Question bank routes
+app.get("/questions", getAllQuestions);
+app.post("/questions", addQuestion);
